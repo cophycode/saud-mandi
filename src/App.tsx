@@ -7,6 +7,8 @@ import Index from "./routes/index";
 import Menu from "./routes/menu";
 import Outlets from "./routes/outlets";
 import OutletDetail from "./routes/outlet.$outletId";
+import AboutPage from "./routes/about";
+import ContactPage from "./routes/contact";
 import NotFound from "./routes/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
       {
         path: "/outlet/:outletId",
         element: <OutletDetail />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
       {
         path: "*",

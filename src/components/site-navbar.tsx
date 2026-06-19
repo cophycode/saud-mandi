@@ -1,14 +1,15 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Menu as MenuIcon, Moon, Sun, X } from "lucide-react";
 
 import saudlogo from "../assets/logo.png";
 import OrderNowButton from "./order-now-button";
 
 type SiteNavbarProps = {
-  currentPath?: "home" | "outlets";
+  currentPath?: "home" | "menu" | "about" | "outlets" | "contact";
 };
 
-function SiteNavbar({ currentPath = "home" }: SiteNavbarProps) {
+function SiteNavbar({ currentPath }: SiteNavbarProps) {
   const [dark, setDark] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
 
@@ -21,47 +22,61 @@ function SiteNavbar({ currentPath = "home" }: SiteNavbarProps) {
     } catch {}
   };
 
-  const homeHref = currentPath === "home" ? "#top" : "/#top";
-  const menuHref = currentPath === "home" ? "#menu" : "/#menu";
-  const aboutHref = currentPath === "home" ? "#about" : "/#about";
-  const reviewsHref = currentPath === "home" ? "#reviews" : "/#reviews";
-  const visitHref = currentPath === "home" ? "#visit" : "/#visit";
-
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-          currentPath === "home" ? "py-5 bg-transparent" : "py-3 backdrop-blur-xl bg-background/80 border-b border-border"
-        }`}
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 py-3 backdrop-blur-xl bg-background/80 border-b border-border`}
       >
         <div className="mx-auto max-w-7xl px-5 lg:px-8 flex items-center justify-between">
-          <a href={homeHref} className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2 group">
             <img src={saudlogo} alt="Saud Kuzhimandhi logo" className="w-15 object-cover group-hover:scale-110 transition-transform" />
             <div className="leading-tight">
               <div className="font-display text-xl tracking-wide">SAUD</div>
               <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground -mt-1">Kuzhimandhi</div>
             </div>
-          </a>
+          </Link>
 
           <nav className="hidden lg:flex items-center gap-9 text-sm font-medium">
-            <a href={homeHref} className="relative hover:text-accent transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-accent hover:after:w-full after:transition-all after:duration-300">
+            <Link
+              to="/"
+              className={`relative hover:text-accent transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-accent after:transition-all after:duration-300 ${
+                currentPath === "home" ? "text-accent after:w-full" : "after:w-0 hover:after:w-full"
+              }`}
+            >
               Home
-            </a>
-            <a href={menuHref} className="relative hover:text-accent transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-accent hover:after:w-full after:transition-all after:duration-300">
+            </Link>
+            <Link
+              to="/menu"
+              className={`relative hover:text-accent transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-accent after:transition-all after:duration-300 ${
+                currentPath === "menu" ? "text-accent after:w-full" : "after:w-0 hover:after:w-full"
+              }`}
+            >
               Menu
-            </a>
-            <a href={aboutHref} className="relative hover:text-accent transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-accent hover:after:w-full after:transition-all after:duration-300">
+            </Link>
+            <Link
+              to="/about"
+              className={`relative hover:text-accent transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-accent after:transition-all after:duration-300 ${
+                currentPath === "about" ? "text-accent after:w-full" : "after:w-0 hover:after:w-full"
+              }`}
+            >
               About
-            </a>
-            <a href={reviewsHref} className="relative hover:text-accent transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-accent hover:after:w-full after:transition-all after:duration-300">
-              Reviews
-            </a>
-            <a href={visitHref} className="relative hover:text-accent transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-accent hover:after:w-full after:transition-all after:duration-300">
-              Visit
-            </a>
-            <a href="/outlets" className="relative hover:text-accent transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-accent hover:after:w-full after:transition-all after:duration-300">
+            </Link>
+            <Link
+              to="/outlets"
+              className={`relative hover:text-accent transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-accent after:transition-all after:duration-300 ${
+                currentPath === "outlets" ? "text-accent after:w-full" : "after:w-0 hover:after:w-full"
+              }`}
+            >
               Outlets
-            </a>
+            </Link>
+            <Link
+              to="/contact"
+              className={`relative hover:text-accent transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-accent after:transition-all after:duration-300 ${
+                currentPath === "contact" ? "text-accent after:w-full" : "after:w-0 hover:after:w-full"
+              }`}
+            >
+              Contact
+            </Link>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -88,24 +103,21 @@ function SiteNavbar({ currentPath = "home" }: SiteNavbarProps) {
           <button onClick={() => setNavOpen(false)} className="absolute top-6 right-6 w-12 h-12 rounded-full glass flex items-center justify-center">
             <X className="w-5 h-5" />
           </button>
-          <a href={homeHref} onClick={() => setNavOpen(false)} className="font-display text-5xl tracking-wide hover:text-gold transition-colors">
+          <Link to="/" onClick={() => setNavOpen(false)} className={`font-display text-5xl tracking-wide transition-colors ${currentPath === "home" ? "text-gold" : "hover:text-gold"}`}>
             Home
-          </a>
-          <a href={menuHref} onClick={() => setNavOpen(false)} className="font-display text-5xl tracking-wide hover:text-gold transition-colors">
+          </Link>
+          <Link to="/menu" onClick={() => setNavOpen(false)} className={`font-display text-5xl tracking-wide transition-colors ${currentPath === "menu" ? "text-gold" : "hover:text-gold"}`}>
             Menu
-          </a>
-          <a href={aboutHref} onClick={() => setNavOpen(false)} className="font-display text-5xl tracking-wide hover:text-gold transition-colors">
+          </Link>
+          <Link to="/about" onClick={() => setNavOpen(false)} className={`font-display text-5xl tracking-wide transition-colors ${currentPath === "about" ? "text-gold" : "hover:text-gold"}`}>
             About
-          </a>
-          <a href={reviewsHref} onClick={() => setNavOpen(false)} className="font-display text-5xl tracking-wide hover:text-gold transition-colors">
-            Reviews
-          </a>
-          <a href={visitHref} onClick={() => setNavOpen(false)} className="font-display text-5xl tracking-wide hover:text-gold transition-colors">
-            Visit
-          </a>
-          <a href="/outlets" onClick={() => setNavOpen(false)} className="font-display text-5xl tracking-wide hover:text-gold transition-colors">
+          </Link>
+          <Link to="/outlets" onClick={() => setNavOpen(false)} className={`font-display text-5xl tracking-wide transition-colors ${currentPath === "outlets" ? "text-gold" : "hover:text-gold"}`}>
             Outlets
-          </a>
+          </Link>
+          <Link to="/contact" onClick={() => setNavOpen(false)} className={`font-display text-5xl tracking-wide transition-colors ${currentPath === "contact" ? "text-gold" : "hover:text-gold"}`}>
+            Contact
+          </Link>
           <a href="tel:+917902655501" className="mt-6 px-8 py-3 rounded-full gold-grad text-black font-semibold">
             Call · +91 79026 55501
           </a>
