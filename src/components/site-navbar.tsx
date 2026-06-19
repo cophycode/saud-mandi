@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Menu as MenuIcon, Moon, Sun, X } from "lucide-react";
 
@@ -12,6 +12,14 @@ type SiteNavbarProps = {
 function SiteNavbar({ currentPath }: SiteNavbarProps) {
   const [dark, setDark] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const toggleTheme = () => {
     const next = !dark;
@@ -25,7 +33,11 @@ function SiteNavbar({ currentPath }: SiteNavbarProps) {
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 py-3 backdrop-blur-xl bg-background/80 border-b border-border`}
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 py-3 ${
+          scrolled
+            ? "backdrop-blur-xl bg-background/80 border-b border-border"
+            : "bg-transparent border-b border-transparent"
+        }`}
       >
         <div className="mx-auto max-w-7xl px-5 lg:px-8 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">

@@ -305,8 +305,11 @@ function ContactPage() {
                       style={{ backgroundImage: "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>')", backgroundPosition: "right 16px center", backgroundSize: "16px", backgroundRepeat: "no-repeat" }}
                     >
                       <option value="general">General Feedback / Catering</option>
-                      <option value="vengara">Vengara Outlet</option>
-                      <option value="malappuram">Malappuram Outlet</option>
+                      {OUTLETS.map((outlet) => (
+                        <option key={outlet.id} value={outlet.id}>
+                          {outlet.name}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>

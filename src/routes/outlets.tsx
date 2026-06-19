@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  ArrowLeft,
   Award,
   Clock,
   MapPin,
@@ -9,46 +9,7 @@ import {
 } from "lucide-react";
 
 import SiteNavbar from "../components/site-navbar";
-
-export interface Outlet {
-  id: string;
-  name: string;
-  location: string;
-  address: string;
-  phone: string;
-  whatsapp: string;
-  hours: string;
-  image: string;
-  rating: number;
-  speciality: string;
-}
-
-const OUTLETS: Outlet[] = [
-  {
-    id: "vengara",
-    name: "Saud Kuzhimandhi - Vengara",
-    location: "Vengara",
-    address: "Main Street, Vengara, Malappuram, Kerala 679337",
-    phone: "+91 98765 43210",
-    whatsapp: "+91 98765 43210",
-    hours: "11:00 AM - 11:00 PM",
-    image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&h=300&fit=crop",
-    rating: 4.8,
-    speciality: "Premium Slow-Cooked Mandi",
-  },
-  {
-    id: "malappuram",
-    name: "Saud Kuzhimandhi - Malappuram",
-    location: "Malappuram",
-    address: "Fort Road, Malappuram, Kerala 676505",
-    phone: "+91 98765 43211",
-    whatsapp: "+91 98765 43211",
-    hours: "10:30 AM - 11:30 PM",
-    image: "https://images.unsplash.com/photo-1517248135467-4d71bcdd2d59?w=500&h=300&fit=crop",
-    rating: 4.7,
-    speciality: "Authentic Arabian Alfaham",
-  },
-];
+import { OUTLETS } from "../lib/outlets-data";
 
 function Outlets() {
   return (
@@ -128,13 +89,13 @@ function Outlets() {
                     </a>
                   </div>
 
-                    <a
-                      href={`/outlet/${outlet.id}`}
+                  <Link
+                    to={`/outlet/${outlet.id}`}
                     className="mt-3 w-full inline-flex items-center justify-center gap-2 rounded-full gold-grad text-black py-2.5 font-semibold transition-transform hover:scale-[1.01]"
                   >
                     View Details
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}

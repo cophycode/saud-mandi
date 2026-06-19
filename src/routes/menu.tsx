@@ -2,140 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ArrowLeft, Phone, ShoppingBag, Drumstick, Beef, GlassWater } from "lucide-react";
 import heroMandi from "@/assets/hero-mandi.jpg";
-import dishChicken from "@/assets/dish-chicken.jpg";
-import dishAlfaham from "@/assets/dish-alfaham.jpg";
-import dishPeri from "@/assets/dish-peri.jpg";
-import dishBeef from "@/assets/dish-beef.jpg";
-import dishMutton from "@/assets/dish-mutton.jpg";
-import dishFish from "@/assets/dish-fish.jpg";
-import { OUTLETS } from "../lib/outlets-data";
-
-type Portion = { label: string; price: number };
-type Dish = { name: string; img?: string; tag?: string; portions: Portion[] };
-type Juice = { name: string; price: number };
-
-const ASSETS = {
-  dishChicken,
-  dishAlfaham,
-  dishPeri,
-  dishBeef,
-  dishMutton,
-  dishFish,
-};
-
-// Vengara Menu Data
-const VENGARA_MANDI: Dish[] = [
-  { name: "Chicken Kuzhi Mandi", img: ASSETS.dishChicken, tag: "Wood-Fired Signature", portions: [
-    { label: "Quarter", price: 180 }, { label: "Half", price: 340 },
-    { label: "Half + Qtr", price: 520 }, { label: "Full", price: 660 },
-  ]},
-  { name: "Alfaham Mandi", img: ASSETS.dishAlfaham, tag: "Popular", portions: [
-    { label: "Quarter", price: 200 }, { label: "Half", price: 360 },
-    { label: "Half + Qtr", price: 560 }, { label: "Full", price: 700 },
-  ]},
-  { name: "Periperi Alfaham Mandi", img: ASSETS.dishPeri, tag: "Spicy Hot", portions: [
-    { label: "Quarter", price: 200 }, { label: "Half", price: 370 },
-    { label: "Half + Qtr", price: 570 }, { label: "Full", price: 720 },
-  ]},
-  { name: "Yemeni Mutton Mandi", img: ASSETS.dishMutton, tag: "Vengara Special", portions: [
-    { label: "Quarter", price: 290 }, { label: "Half", price: 550 },
-    { label: "Half + Qtr", price: 820 }, { label: "Full", price: 1080 },
-  ]},
-  { name: "Honey Chilly Alfaham Mandi", img: ASSETS.dishPeri, portions: [
-    { label: "Quarter", price: 210 }, { label: "Half", price: 370 },
-    { label: "Half + Qtr", price: 580 }, { label: "Full", price: 720 },
-  ]},
-  { name: "Beef Mandi", img: ASSETS.dishBeef, tag: "Smokey Beef", portions: [
-    { label: "Quarter", price: 200 }, { label: "Half", price: 400 },
-    { label: "Half + Qtr", price: 600 }, { label: "Full", price: 800 },
-  ]},
-];
-
-const VENGARA_PIECES: Dish[] = [
-  { name: "Mandi Chicken (Piece Only)", img: ASSETS.dishChicken, portions: [
-    { label: "Quarter", price: 100 }, { label: "Half", price: 200 },
-    { label: "Half + Qtr", price: 300 }, { label: "Full", price: 400 },
-  ]},
-  { name: "Alfaham (Piece Only)", img: ASSETS.dishAlfaham, portions: [
-    { label: "Quarter", price: 130 }, { label: "Half", price: 240 },
-    { label: "Half + Qtr", price: 370 }, { label: "Full", price: 460 },
-  ]},
-  { name: "Beef (Piece Only)", img: ASSETS.dishBeef, portions: [
-    { label: "Quarter", price: 140 }, { label: "Half", price: 260 },
-    { label: "Half + Qtr", price: 400 }, { label: "Full", price: 480 },
-  ]},
-];
-
-const VENGARA_JUICES: Juice[] = [
-  { name: "Fresh Lime", price: 25 },
-  { name: "Mint Lime", price: 30 },
-  { name: "Grape Juice", price: 50 },
-  { name: "Mango Shake", price: 60 },
-  { name: "Tender Coconut Shake", price: 70 },
-  { name: "Pine Apple Juice", price: 50 },
-  { name: "Butter Fruit Juice", price: 60 },
-];
-
-// Malappuram Menu Data
-const MALAPPURAM_MANDI: Dish[] = [
-  { name: "Chicken Kuzhi Mandi", img: ASSETS.dishChicken, tag: "Signature", portions: [
-    { label: "Quarter", price: 185 }, { label: "Half", price: 345 },
-    { label: "Half + Qtr", price: 525 }, { label: "Full", price: 670 },
-  ]},
-  { name: "Honey Chilly Alfaham Mandi", img: ASSETS.dishPeri, tag: "Malappuram Special", portions: [
-    { label: "Quarter", price: 220 }, { label: "Half", price: 390 },
-    { label: "Half + Qtr", price: 590 }, { label: "Full", price: 750 },
-  ]},
-  { name: "Kandhari Alfaham Mandi", img: ASSETS.dishPeri, tag: "Fiery Kandhari", portions: [
-    { label: "Quarter", price: 210 }, { label: "Half", price: 380 },
-    { label: "Half + Qtr", price: 580 }, { label: "Full", price: 740 },
-  ]},
-  { name: "Alfaham Mandi", img: ASSETS.dishAlfaham, tag: "Popular", portions: [
-    { label: "Quarter", price: 205 }, { label: "Half", price: 365 },
-    { label: "Half + Qtr", price: 565 }, { label: "Full", price: 710 },
-  ]},
-  { name: "Periperi Alfaham Mandi", img: ASSETS.dishPeri, tag: "Spicy", portions: [
-    { label: "Quarter", price: 205 }, { label: "Half", price: 375 },
-    { label: "Half + Qtr", price: 575 }, { label: "Full", price: 730 },
-  ]},
-  { name: "Beef Mandi", img: ASSETS.dishBeef, tag: "Chef's Choice", portions: [
-    { label: "Quarter", price: 210 }, { label: "Half", price: 410 },
-    { label: "Half + Qtr", price: 610 }, { label: "Full", price: 810 },
-  ]},
-  { name: "Fish Mandi", img: ASSETS.dishFish, tag: "Fresh Grill", portions: [
-    { label: "Quarter", price: 240 }, { label: "Half", price: 450 },
-    { label: "Half + Qtr", price: 680 }, { label: "Full", price: 890 },
-  ]},
-];
-
-const MALAPPURAM_PIECES: Dish[] = [
-  { name: "Mandi Chicken (Piece Only)", img: ASSETS.dishChicken, portions: [
-    { label: "Quarter", price: 105 }, { label: "Half", price: 205 },
-    { label: "Half + Qtr", price: 305 }, { label: "Full", price: 405 },
-  ]},
-  { name: "Alfaham (Piece Only)", img: ASSETS.dishAlfaham, portions: [
-    { label: "Quarter", price: 135 }, { label: "Half", price: 245 },
-    { label: "Half + Qtr", price: 375 }, { label: "Full", price: 470 },
-  ]},
-  { name: "Periperi / Kandhari / Honey (Piece Only)", img: ASSETS.dishPeri, portions: [
-    { label: "Quarter", price: 145 }, { label: "Half", price: 265 },
-    { label: "Half + Qtr", price: 405 }, { label: "Full", price: 485 },
-  ]},
-  { name: "Beef (Piece Only)", img: ASSETS.dishBeef, portions: [
-    { label: "Quarter", price: 145 }, { label: "Half", price: 270 },
-    { label: "Half + Qtr", price: 410 }, { label: "Full", price: 495 },
-  ]},
-];
-
-const MALAPPURAM_JUICES: Juice[] = [
-  { name: "Fresh Lime", price: 25 },
-  { name: "Mint Lime", price: 30 },
-  { name: "Grape Juice", price: 50 },
-  { name: "Avacado Shake", price: 80 },
-  { name: "Dates Shake", price: 80 },
-  { name: "Special Arabian Shake", price: 95 },
-  { name: "Pine Apple Juice", price: 55 },
-];
+import { getOutletById, OUTLETS } from "../lib/outlets-data";
 
 type SectionKey = "mandi" | "pieces" | "juice";
 
@@ -147,13 +14,8 @@ function MenuPage() {
     window.scrollTo(0, 0);
   }, [outletId]);
 
-  // Find outlet details
-  const currentOutlet = OUTLETS.find((o) => o.id === outletId) || OUTLETS[0];
-
-  // Load outlet specific menus
-  const mandiList = outletId === "malappuram" ? MALAPPURAM_MANDI : VENGARA_MANDI;
-  const piecesList = outletId === "malappuram" ? MALAPPURAM_PIECES : VENGARA_PIECES;
-  const juiceList = outletId === "malappuram" ? MALAPPURAM_JUICES : VENGARA_JUICES;
+  const currentOutlet = getOutletById(outletId) ?? OUTLETS[0];
+  const { mandi: mandiList, pieces: piecesList, juices: juiceList } = currentOutlet.menu;
 
   const sections: { key: SectionKey; label: string; sub: string; Icon: typeof Drumstick; count: number }[] = [
     { key: "mandi", label: "Mandi Dishes", sub: "Aromatically Smoked Classics", Icon: Drumstick, count: mandiList.length },
