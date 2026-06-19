@@ -350,46 +350,86 @@ function Index() {
 
       {/* LOCATION */}
       <section id="visit" className="py-20 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
-          <div className="reveal">
-            <div className="text-xs uppercase tracking-[0.35em] text-accent font-semibold mb-3">Find Us</div>
-            <h2 className="font-display text-5xl lg:text-7xl leading-[0.9] mb-6">
-              COME<br/><span className="text-gold">VISIT US.</span>
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="reveal text-center mb-12 lg:mb-16">
+            <div className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-accent font-semibold mb-6">
+              <span className="w-10 h-px bg-accent" />
+              Find Your Nearest Outlet
+              <span className="w-10 h-px bg-accent" />
+            </div>
+            <h2 className="font-display leading-[0.9] text-5xl lg:text-7xl xl:text-8xl">
+              OUR <span className="text-gold">OUTLETS</span>
             </h2>
-            <div className="space-y-4 text-base">
-              <div className="flex gap-4">
-                <MapPin className="w-5 h-5 text-accent shrink-0 mt-1" />
-                <div>
-                  <div className="font-semibold">Saud Kuzhimandhi</div>
-                  <div className="text-muted-foreground">Vengara Rd, Kacherippadi,<br/>Malappuram, Kerala 676304</div>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <Phone className="w-5 h-5 text-accent shrink-0 mt-1" />
-                <a href="tel:+917902655501" className="hover:text-accent">+91 79026 55501</a>
-              </div>
-              <div className="flex gap-4">
-                <Clock className="w-5 h-5 text-accent shrink-0 mt-1" />
-                <div><span className="text-green-500 font-semibold">Open now</span> · Closes 11:30 PM</div>
-              </div>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="https://maps.google.com/?q=Saud+Kuzhimandhi+Malappuram" target="_blank" rel="noreferrer" className="px-6 py-3 rounded-full gold-grad text-black font-semibold lux-shadow hover:scale-105 transition-transform">
-                Directions
-              </a>
-              <a href="tel:+917902655501" className="px-6 py-3 rounded-full border border-border bg-card hover:bg-secondary font-semibold">
-                Call Now
-              </a>
-            </div>
+            <p className="mt-6 max-w-2xl mx-auto text-base lg:text-lg text-muted-foreground leading-relaxed">
+              Experience authentic Arabian Kuzhimandhi at our premium outlets across Kerala.
+            </p>
           </div>
 
-          <div className="reveal rounded-3xl overflow-hidden border border-border card-shadow aspect-[4/3] lg:aspect-square">
-            <iframe
-              title="Saud Kuzhimandhi location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.856380279213!2d75.95965214834298!3d11.049392726140516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba64d3780704ce3%3A0xff573e931002f78!2sSaud%20kuzhimandhi%20Restaurant!5e0!3m2!1sen!2sus!4v1781689851928!5m2!1sen!2sus"
-              className="w-full h-full grayscale-[0.2]"
-              loading="lazy"
-            />
+          <div className="reveal grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {OUTLETS.map((outlet) => (
+              <div
+                key={outlet.id}
+                className="group overflow-hidden rounded-3xl border border-border bg-card card-shadow hover:-translate-y-1 transition-all duration-300 max-w-xl mx-auto w-full"
+              >
+                <div className="relative h-40 sm:h-44 overflow-hidden bg-muted">
+                  <img
+                    src={outlet.image}
+                    alt={outlet.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute top-3 right-3 bg-black/55 backdrop-blur px-3 py-1 rounded-full text-sm font-medium text-white flex items-center gap-1">
+                    <Award className="w-4 h-4 text-[#FFC52E]" />
+                    {outlet.rating}
+                  </div>
+                </div>
+
+                <div className="p-4 sm:p-5">
+                  <div className="mb-3">
+                    <h3 className="font-display text-2xl leading-tight mb-1">{outlet.name}</h3>
+                    <p className="text-sm text-accent font-semibold uppercase tracking-[0.25em]">{outlet.speciality}</p>
+                  </div>
+
+                  <div className="space-y-3 text-sm text-muted-foreground">
+                    <div className="flex gap-2.5">
+                      <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5 text-accent" />
+                      <p>{outlet.address}</p>
+                    </div>
+                    <div className="flex gap-2.5">
+                      <Clock className="w-4 h-4 flex-shrink-0 mt-0.5 text-accent" />
+                      <p>{outlet.hours}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 mt-4">
+                    <a
+                      href={`tel:${outlet.phone}`}
+                      className="flex items-center justify-center gap-2 rounded-full border border-border bg-background/60 hover:bg-secondary transition-colors py-2.5 text-sm font-semibold"
+                    >
+                      <Phone className="w-4 h-4" />
+                      Call
+                    </a>
+                    <a
+                      href={`https://wa.me/${outlet.whatsapp.replace(/\D/g, "")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 rounded-full border border-border bg-background/60 hover:bg-secondary transition-colors py-2.5 text-sm font-semibold"
+                    >
+                      <MessageCircle className="w-4 h-4 text-green-500" />
+                      WhatsApp
+                    </a>
+                  </div>
+
+                  <Link
+                    to={`/outlet/${outlet.id}`}
+                    className="mt-3 w-full inline-flex items-center justify-center gap-2 rounded-full gold-grad text-black py-2.5 font-semibold transition-transform hover:scale-[1.01]"
+                  >
+                    View Details
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
