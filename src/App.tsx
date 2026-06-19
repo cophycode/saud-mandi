@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Root from "./routes/Root";
 import Index from "./routes/index";
 import Menu from "./routes/menu";
+import MenuPicker from "./routes/menu-picker";
 import Outlets from "./routes/outlets";
 import OutletDetail from "./routes/outlet.$outletId";
 import AboutPage from "./routes/about";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/menu",
+        element: <MenuPicker />,
+      },
+      {
+        path: "/menu/:outletId",
         element: <Menu />,
       },
       {

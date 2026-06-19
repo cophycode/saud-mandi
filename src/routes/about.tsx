@@ -132,7 +132,8 @@ function AboutPage() {
           <div className="reveal-about space-y-6">
             <div className="text-xs uppercase tracking-[0.35em] text-accent font-semibold">Behind The Embers</div>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-tight">
-              CRAFTING AUTHENTICITY <span className="text-gold">EVERY DAY.</span>
+              CRAFTING AUTHENTICITY <br />
+              <span className="text-gold">EVERY DAY.</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed">
               Saud Kuzhimandhi was founded in 2021 with a clear, singular focus: to serve genuine, 
