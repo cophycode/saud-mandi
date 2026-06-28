@@ -26,12 +26,12 @@ import {
 import heroMandi from "../assets/hero-mandi.jpg";
 import saudlogo from "../assets/logo.png";
 import diningAmbience from "../assets/dining-ambience.jpg";
-import dishChicken from "../assets/dish-chicken.jpg";
-import dishBeef from "../assets/dish-beef.jpg";
-import dishMutton from "../assets/dish-mutton.jpg";
-import dishPeri from "../assets/dish-peri.jpg";
-import dishAlfaham from "../assets/dish-alfaham.jpg";
-import dishFish from "../assets/dish-fish.jpg";
+const dishChicken = "https://i.pinimg.com/736x/4d/5c/e9/4d5ce9f9917e6141979e5c9a24c5da28.jpg";
+const dishAlfaham = "https://favhiker-production-public.s3.ap-south-1.amazonaws.com/items/1014.png";
+const dishPeri = "https://b.zmtcdn.com/data/pictures/7/18874347/3b88ab47153f3d59a3011531fbc84cae_o2_featured_v2.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*";
+const dishHoney = "https://favhiker-dev-public.s3.amazonaws.com/items/102046.jpeg";
+const dishBeef = "https://cdn.citymapia.com/kottayam/malabar-majlis/37895/Portfolio.jpg?biz=8363";
+const dishMutton = "https://i.ytimg.com/vi/krs52rRGceY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLA379qkajXOtgMFSJ0H7W2e2VhH7Q";
 import SiteNavbar from "../components/site-navbar";
 import OrderNowButton from "../components/order-now-button";
 import { OUTLETS } from "../lib/outlets-data";
@@ -42,7 +42,6 @@ const DISHES = [
   { name: "Mutton Mandi", price: 349, img: dishMutton, desc: "Aged mutton, traditional Yemeni spice blend, served with thaheena." },
   { name: "Peri Peri Mandi", price: 279, img: dishPeri, desc: "Flame-grilled chicken with fiery peri peri glaze on aromatic rice." },
   { name: "Honey Alfaham", price: 269, img: dishAlfaham, desc: "Charcoal-grilled chicken finished with wild honey & dark spice." },
-  { name: "Fish Mandi", price: 299, img: dishFish, desc: "Catch-of-the-day, marinated overnight, smoked & plated with lemon." },
 ];
 
 const REVIEWS = [
@@ -163,7 +162,7 @@ function Index() {
               </div>
               <div className="hero-stat flex items-center gap-2">
                 <Clock className="w-5 h-5 text-accent" />
-                <span className="text-sm font-semibold">Open till 11:30 PM</span>
+                <span className="text-sm font-semibold">Open till 12:00 PM</span>
               </div>
               <div className="hero-stat flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-accent" />
