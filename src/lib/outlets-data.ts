@@ -1,4 +1,4 @@
-const dishChicken = "/src/assets/chicken-mandi.jpg";
+import dishChicken from "@/assets/chicken-mandi.jpg";
 const dishAlfaham = "https://favhiker-production-public.s3.ap-south-1.amazonaws.com/items/1014.png";
 const dishPeri = "https://b.zmtcdn.com/data/pictures/7/18874347/3b88ab47153f3d59a3011531fbc84cae_o2_featured_v2.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*";
 const dishHoney = "https://favhiker-dev-public.s3.amazonaws.com/items/102046.jpeg";
@@ -15,7 +15,7 @@ const DISH_IMAGES = {
   dishBeef,
   dishMutton,
   dishPepper,
-  dishKandhari
+  dishKandhari,
 };
 
 export type OutletReview = {
