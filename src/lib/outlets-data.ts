@@ -1,9 +1,11 @@
-const dishChicken = "https://i.pinimg.com/736x/4d/5c/e9/4d5ce9f9917e6141979e5c9a24c5da28.jpg";
+const dishChicken = "/src/assets/chicken-mandi.jpg";
 const dishAlfaham = "https://favhiker-production-public.s3.ap-south-1.amazonaws.com/items/1014.png";
 const dishPeri = "https://b.zmtcdn.com/data/pictures/7/18874347/3b88ab47153f3d59a3011531fbc84cae_o2_featured_v2.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*";
 const dishHoney = "https://favhiker-dev-public.s3.amazonaws.com/items/102046.jpeg";
 const dishBeef = "https://cdn.citymapia.com/kottayam/malabar-majlis/37895/Portfolio.jpg?biz=8363";
 const dishMutton = "https://i.ytimg.com/vi/krs52rRGceY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLA379qkajXOtgMFSJ0H7W2e2VhH7Q";
+const dishPepper = "https://favhiker-production-public.s3.ap-south-1.amazonaws.com/items/1014.png";
+const dishKandhari = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4zyomdN55dfkow83wHuW-xSM0crU3l-bSr8GFdJykhCPuAnMgiLyfGWSJ&s=10";
 
 const DISH_IMAGES = {
   dishChicken,
@@ -11,7 +13,9 @@ const DISH_IMAGES = {
   dishPeri,
   dishHoney,
   dishBeef,
-  dishMutton
+  dishMutton,
+  dishPepper,
+  dishKandhari
 };
 
 export type OutletReview = {
@@ -120,23 +124,35 @@ export const OUTLETS: Outlet[] = [
           ],
         },
         {
-          name: "Yemeni Mutton Mandi",
-          img: DISH_IMAGES.dishMutton,
-          tag: "Vengara Special",
-          portions: [
-            { label: "Quarter", price: 290 },
-            { label: "Half", price: 550 },
-            { label: "Half + Qtr", price: 820 },
-            { label: "Full", price: 1080 },
-          ],
-        },
-        {
           name: "Honey Chilly Alfaham Mandi",
           img: DISH_IMAGES.dishHoney,
+          tag: "Sweet & Spicy",
           portions: [
             { label: "Quarter", price: 210 },
             { label: "Half", price: 370 },
             { label: "Half + Qtr", price: 580 },
+            { label: "Full", price: 720 },
+          ],
+        },
+        {
+          name: "Pepper Alfaham Mandi",
+          img: DISH_IMAGES.dishPepper,
+          tag: "Pepper Special",
+          portions: [
+            { label: "Quarter", price: 200 },
+            { label: "Half", price: 370 },
+            { label: "Half + Qtr", price: 570 },
+            { label: "Full", price: 720 },
+          ],
+        },
+        {
+          name: "Kandhari Alfaham Mandi",
+          img: DISH_IMAGES.dishKandhari,
+          tag: "Fiery Flavor",
+          portions: [
+            { label: "Quarter", price: 200 },
+            { label: "Half", price: 370 },
+            { label: "Half + Qtr", price: 570 },
             { label: "Full", price: 720 },
           ],
         },
@@ -152,6 +168,7 @@ export const OUTLETS: Outlet[] = [
           ],
         },
       ],
+
       pieces: [
         {
           name: "Mandi Chicken (Piece Only)",
@@ -174,6 +191,16 @@ export const OUTLETS: Outlet[] = [
           ],
         },
         {
+          name: "Periperi / Kandhari / Pepper / Honey (Piece Only)",
+          img: DISH_IMAGES.dishPeri,
+          portions: [
+            { label: "Quarter", price: 140 },
+            { label: "Half", price: 260 },
+            { label: "Half + Qtr", price: 400 },
+            { label: "Full", price: 480 },
+          ],
+        },
+        {
           name: "Beef (Piece Only)",
           img: DISH_IMAGES.dishBeef,
           portions: [
@@ -184,16 +211,21 @@ export const OUTLETS: Outlet[] = [
           ],
         },
       ],
+
       juices: [
         { name: "Fresh Lime", price: 25 },
         { name: "Mint Lime", price: 30 },
         { name: "Grape Juice", price: 50 },
-        { name: "Mango Shake", price: 60 },
-        { name: "Tender Coconut Shake", price: 70 },
+        { name: "Butter Fruit Juice", price: 50 },
+        { name: "Mango Juice", price: 50 },
         { name: "Pine Apple Juice", price: 50 },
-        { name: "Butter Fruit Juice", price: 60 },
+        { name: "Avocado Juice", price: 50 },
+        { name: "Tender Coconut Juice", price: 50 },
+        { name: "Orange Juice", price: 50 },
+        { name: "Shake", price: 70 },
       ],
     },
+
     reviews: [
       {
         author: "Ahmed M.",
@@ -244,34 +276,12 @@ export const OUTLETS: Outlet[] = [
         {
           name: "Chicken Kuzhi Mandi",
           img: DISH_IMAGES.dishChicken,
-          tag: "Signature",
+          tag: "Wood-Fired Signature",
           portions: [
-            { label: "Quarter", price: 185 },
-            { label: "Half", price: 345 },
-            { label: "Half + Qtr", price: 525 },
-            { label: "Full", price: 670 },
-          ],
-        },
-        {
-          name: "Honey Chilly Alfaham Mandi",
-          img: DISH_IMAGES.dishPeri,
-          tag: "Payyanakkal Special",
-          portions: [
-            { label: "Quarter", price: 220 },
-            { label: "Half", price: 390 },
-            { label: "Half + Qtr", price: 590 },
-            { label: "Full", price: 750 },
-          ],
-        },
-        {
-          name: "Kandhari Alfaham Mandi",
-          img: DISH_IMAGES.dishPeri,
-          tag: "Fiery Kandhari",
-          portions: [
-            { label: "Quarter", price: 210 },
-            { label: "Half", price: 380 },
-            { label: "Half + Qtr", price: 580 },
-            { label: "Full", price: 740 },
+            { label: "Quarter", price: 180 },
+            { label: "Half", price: 340 },
+            { label: "Half + Qtr", price: 520 },
+            { label: "Full", price: 660 },
           ],
         },
         {
@@ -279,87 +289,126 @@ export const OUTLETS: Outlet[] = [
           img: DISH_IMAGES.dishAlfaham,
           tag: "Popular",
           portions: [
-            { label: "Quarter", price: 205 },
-            { label: "Half", price: 365 },
-            { label: "Half + Qtr", price: 565 },
-            { label: "Full", price: 710 },
+            { label: "Quarter", price: 200 },
+            { label: "Half", price: 360 },
+            { label: "Half + Qtr", price: 560 },
+            { label: "Full", price: 700 },
           ],
         },
         {
           name: "Periperi Alfaham Mandi",
           img: DISH_IMAGES.dishPeri,
-          tag: "Spicy",
+          tag: "Spicy Hot",
           portions: [
-            { label: "Quarter", price: 205 },
-            { label: "Half", price: 375 },
-            { label: "Half + Qtr", price: 575 },
-            { label: "Full", price: 730 },
+            { label: "Quarter", price: 200 },
+            { label: "Half", price: 370 },
+            { label: "Half + Qtr", price: 570 },
+            { label: "Full", price: 720 },
+          ],
+        },
+        {
+          name: "Honey Chilly Alfaham Mandi",
+          img: DISH_IMAGES.dishHoney,
+          tag: "Sweet & Spicy",
+          portions: [
+            { label: "Quarter", price: 210 },
+            { label: "Half", price: 370 },
+            { label: "Half + Qtr", price: 580 },
+            { label: "Full", price: 720 },
+          ],
+        },
+        {
+          name: "Pepper Alfaham Mandi",
+          img: DISH_IMAGES.dishPepper,
+          tag: "Pepper Special",
+          portions: [
+            { label: "Quarter", price: 200 },
+            { label: "Half", price: 370 },
+            { label: "Half + Qtr", price: 570 },
+            { label: "Full", price: 720 },
+          ],
+        },
+        {
+          name: "Kandhari Alfaham Mandi",
+          img: DISH_IMAGES.dishKandhari,
+          tag: "Fiery Flavor",
+          portions: [
+            { label: "Quarter", price: 200 },
+            { label: "Half", price: 370 },
+            { label: "Half + Qtr", price: 570 },
+            { label: "Full", price: 720 },
           ],
         },
         {
           name: "Beef Mandi",
           img: DISH_IMAGES.dishBeef,
-          tag: "Chef's Choice",
+          tag: "Smokey Beef",
           portions: [
-            { label: "Quarter", price: 210 },
-            { label: "Half", price: 410 },
-            { label: "Half + Qtr", price: 610 },
-            { label: "Full", price: 810 },
+            { label: "Quarter", price: 200 },
+            { label: "Half", price: 400 },
+            { label: "Half + Qtr", price: 600 },
+            { label: "Full", price: 800 },
           ],
         },
       ],
+
       pieces: [
         {
           name: "Mandi Chicken (Piece Only)",
           img: DISH_IMAGES.dishChicken,
           portions: [
-            { label: "Quarter", price: 105 },
-            { label: "Half", price: 205 },
-            { label: "Half + Qtr", price: 305 },
-            { label: "Full", price: 405 },
+            { label: "Quarter", price: 100 },
+            { label: "Half", price: 200 },
+            { label: "Half + Qtr", price: 300 },
+            { label: "Full", price: 400 },
           ],
         },
         {
           name: "Alfaham (Piece Only)",
           img: DISH_IMAGES.dishAlfaham,
           portions: [
-            { label: "Quarter", price: 135 },
-            { label: "Half", price: 245 },
-            { label: "Half + Qtr", price: 375 },
-            { label: "Full", price: 470 },
+            { label: "Quarter", price: 130 },
+            { label: "Half", price: 240 },
+            { label: "Half + Qtr", price: 370 },
+            { label: "Full", price: 460 },
           ],
         },
         {
-          name: "Periperi / Kandhari / Honey (Piece Only)",
+          name: "Periperi / Kandhari / Pepper / Honey (Piece Only)",
           img: DISH_IMAGES.dishPeri,
           portions: [
-            { label: "Quarter", price: 145 },
-            { label: "Half", price: 265 },
-            { label: "Half + Qtr", price: 405 },
-            { label: "Full", price: 485 },
+            { label: "Quarter", price: 140 },
+            { label: "Half", price: 260 },
+            { label: "Half + Qtr", price: 400 },
+            { label: "Full", price: 480 },
           ],
         },
         {
           name: "Beef (Piece Only)",
           img: DISH_IMAGES.dishBeef,
           portions: [
-            { label: "Quarter", price: 145 },
-            { label: "Half", price: 270 },
-            { label: "Half + Qtr", price: 410 },
-            { label: "Full", price: 495 },
+            { label: "Quarter", price: 140 },
+            { label: "Half", price: 260 },
+            { label: "Half + Qtr", price: 400 },
+            { label: "Full", price: 480 },
           ],
         },
       ],
+
       juices: [
         { name: "Fresh Lime", price: 25 },
         { name: "Mint Lime", price: 30 },
         { name: "Grape Juice", price: 50 },
-        { name: "Avacado Shake", price: 80 },
-        { name: "Dates Shake", price: 80 },
-        { name: "Special Arabian Shake", price: 95 },
-        { name: "Pine Apple Juice", price: 55 },
+        { name: "Butter Fruit Juice", price: 50 },
+        { name: "Mango Juice", price: 50 },
+        { name: "Pine Apple Juice", price: 50 },
+        { name: "Avocado Juice", price: 50 },
+        { name: "Tender Coconut Juice", price: 50 },
+        { name: "Orange Juice", price: 50 },
+        { name: "Shake", price: 70 },
       ],
     },
+
     reviews: [
       {
         author: "Rashida T.",
